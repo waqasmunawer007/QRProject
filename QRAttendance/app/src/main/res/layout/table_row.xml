@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:weightSum="5"
+    android:orientation="horizontal">
+    <!-- Reading Id -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/couter_textView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/row_item_font_size"
+        android:layout_weight="0.5"
+        android:background="@drawable/cell_shape"
+        android:gravity="center"/>
+
+    <!-- Date & time -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/student_name_textView"
+        android:background="@drawable/cell_shape"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/row_item_font_size"
+        android:layout_weight="2.1"
+        android:gravity="center"/>
+    <!-- Value -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/student_number_textView"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/row_item_font_size"
+        android:background="@drawable/cell_shape"
+        android:layout_weight="1.2"
+        android:gravity="center"/>
+    <!-- Exp -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/student_badge_textView"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/row_item_font_size"
+        android:background="@drawable/cell_shape"
+        android:layout_weight="1.2"
+        android:gravity="center"/>
+
+</TableRow>

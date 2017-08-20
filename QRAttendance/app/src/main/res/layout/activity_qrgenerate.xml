@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qr.qrattendance.ui.QRgenerateActivity">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationContentDescription="@string/abc_action_bar_up_description"
+        android:background="?attr/colorPrimary"
+
+
+        />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="49dp"
+        android:orientation="vertical">
+       <EditText
+           android:id="@+id/name_edittext"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="25dp"
+           android:layout_marginTop="20dp"
+           android:hint="Enter Name"
+           android:padding="10dp"
+           android:layout_marginRight="25dp"
+           android:maxLines="1"
+           android:background="@drawable/edit_text_style"/>
+
+        <EditText
+            android:id="@+id/number_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:hint="Enter Number"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:maxLines="1"
+            android:background="@drawable/edit_text_style"/>
+        <EditText
+            android:id="@+id/bage_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:hint="Enter Badge"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:maxLines="1"
+            android:background="@drawable/edit_text_style"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Generate QR Code"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                android:id="@+id/generate_qr_button"
+                 />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/qr_code_imageView"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

@@ -49,6 +49,9 @@ public class DatabaseManager {
         StudentGroupTable groupTable = new StudentGroupTable();
         return groupTable.findGroupById(groupId);
     }
+    //Find Student, it will Student Table
+    //Insert Student
+    //get all courses list
 
 //    public synchronized long insertConsolidatedSensorStats(SensorDeviceStats sensorStats) {
 //        ConsolidatedStatsTable consolidatedSensorStatsTable = new ConsolidatedStatsTable();

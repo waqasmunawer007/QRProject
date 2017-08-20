@@ -23,7 +23,7 @@ public class QRAttendanceApp extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this.getApplicationContext();
-       DatabaseManager.getInstance(); //create database
+     //  DatabaseManager.getInstance(); //create database
     }
 
 
