@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qr.qrattendance">
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.QRgenerateActivity" />
-        <activity android:name=".ui.ReadQRCodeActivity"></activity>
+        <activity android:name=".ui.ReadQRCodeActivity" />
+        <activity android:name=".ui.SignatureActivty"></activity>
     </application>
 
 </manifest>

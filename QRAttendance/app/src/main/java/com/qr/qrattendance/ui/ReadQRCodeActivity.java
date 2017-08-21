@@ -1,5 +1,6 @@
 package com.qr.qrattendance.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,32 +14,23 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ReadQRCodeActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
-  //  IAttendaceMark mMainActivity;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);                // Set the scanner view as the content view
-      //  mMainActivity = new MainActivity();
 
     }
-
     @Override
-    public void handleResult(Result result) {
-     //   Toast.makeText(ReadQRCodeActivity.this,result.toString(),Toast.LENGTH_SHORT).show();
-   //  mMainActivity.AttendaceMark(result.toString());
-        // If you would like to resume scanning, call this method below:
-        //mScannerView.resumeCameraPreview(this);
+    public void handleResult(Result result)
+    {
 
-        String s = result.getText().toString();
-        String[] array = new String[]{};
-        array = s.split(";");
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setMessage("Name  "+array[0]+" \n"+"Number  "+array[2]);
-        AlertDialog alert1 = builder.create();
-        alert1.show();
-
+        Intent intent = new Intent();
+        intent.putExtra("editTextValue", result.toString());
+        setResult(RESULT_OK, intent);    // send back (to Main Activty) Scanned Record
+         finish();
     }
     @Override
     protected void onResume() {
@@ -51,5 +43,11 @@ public class ReadQRCodeActivity extends AppCompatActivity implements ZXingScanne
     protected void onPause() {
         super.onPause();
         mScannerView.stopCamera();           // Stop camera on pause
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 }

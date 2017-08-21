@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_Scroll_root"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/main_rot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.qr.qrattendance.ui.MainActivity">
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,6 +33,7 @@
        android:layout_marginTop="10dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+
        android:orientation="vertical">
       <ImageView
           android:layout_width="match_parent"
@@ -169,59 +172,25 @@
 
        </LinearLayout>
 
-       <!-- Table layout header view -->
+          <!--  Attendace Table -->
 
 
-
-   <!--    <ScrollView
-           android:id="@+id/scrollView1"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:background="#3d455b"
-           android:layout_alignParentLeft="true" >
-
-           <HorizontalScrollView
-               android:id="@+id/hscrll1"
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content" >
-
-               <RelativeLayout
-                   android:id="@+id/RelativeLayout1"
-                   android:layout_width="fill_parent"
-                   android:layout_gravity="center"
-                   android:layout_height="fill_parent"
-                   android:orientation="vertical" >
-
-                   <TableLayout
-                       android:id="@+id/table_main"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_centerHorizontal="true" >
-
-
-                   </TableLayout>
-               </RelativeLayout>
-           </HorizontalScrollView>
-       </ScrollView> -->
-
-       <!-- Table Layout -->
-
-     <!--  -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/header_layout" android:orientation="horizontal"   android:layout_marginTop="5dp" android:weightSum="5">
-
-       <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:gravity="center" android:textColor="@android:color/black" android:textSize="@dimen/header_font_size" android:text="No" android:textStyle="bold" android:layout_weight="0.5"  android:background="@drawable/cell_shape"/>
-
-       <TextView android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center" android:textColor="@android:color/black" android:textSize="@dimen/header_font_size" android:text="Name of Student" android:textStyle="bold" android:layout_weight="2.1"  android:background="@drawable/cell_shape"/>
-
-       <TextView android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center" android:textColor="@android:color/black" android:textSize="@dimen/header_font_size" android:text="Student's Number" android:textStyle="bold" android:layout_weight="1.2"  android:background="@drawable/cell_shape"/>
-
-       <TextView android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center" android:textColor="@android:color/black" android:textSize="@dimen/header_font_size" android:text="Student's Badge" android:textStyle="bold" android:layout_weight="1.2"  android:background="@drawable/cell_shape"/>
-
-   </LinearLayout> -->
-       <TableLayout android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/readings_tableLayout" android:orientation="vertical" android:layout_marginTop="5dp" android:padding="5dp" android:showDividers="middle" android:divider="?android:attr/dividerHorizontal">
-       <TableRow android:id="@+id/table_header"   android:layout_width="match_parent" android:layout_height="match_parent"
+       <TableLayout android:layout_height="match_parent"
+           android:layout_width="match_parent"
+           android:id="@+id/readings_tableLayout"
+           android:orientation="vertical"
+           android:layout_marginTop="5dp"
+           android:padding="5dp"
+           android:showDividers="middle"
+           android:divider="?android:attr/dividerHorizontal">
+           <!-- table header row -->
+           <TableRow android:id="@+id/table_header"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
            android:weightSum="5"
-           android:orientation="horizontal" android:visibility="invisible">
-
+           android:orientation="horizontal"
+           android:visibility="invisible">
+               <!-- Counter-->
            <TextView
                android:layout_width="0dp"
                android:layout_height="wrap_content"
@@ -233,7 +202,7 @@
                android:background="@drawable/cell_shape"
                android:gravity="center"/>
 
-           <!-- Date & time -->
+           <!-- Student Names -->
            <TextView
                android:layout_width="0dp"
                android:layout_height="match_parent"
@@ -244,7 +213,7 @@
                android:layout_weight="2.1"
                android:text="Name of Student"
                android:gravity="center"/>
-           <!-- Value -->
+           <!-- Student Number -->
            <TextView
                android:layout_width="0dp"
                android:layout_height="match_parent"
@@ -255,7 +224,7 @@
                android:layout_weight="1.2"
                android:text="Student's Number"
                android:gravity="center"/>
-           <!-- Exp -->
+           <!-- Student Badge -->
            <TextView
                android:layout_width="0dp"
                android:layout_height="match_parent"
@@ -268,10 +237,44 @@
                android:gravity="center"/>
 
        </TableRow>
-
-
-
        </TableLayout>
+
+
+
+          <!-- Below the Attandace Table Area -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:id="@+id/TableBlowPortion_linearLayout"
+               android:weightSum="1"
+
+               android:orientation="horizontal">
+               <!-- signare canvas -->
+               <RelativeLayout
+                   android:layout_weight=".5"
+                   android:layout_width="0dp"
+                   android:layout_height="90dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:text="Signature"
+                       android:id="@+id/showCanvasLable_TextView"
+                       android:layout_height="90dp"
+                       android:onClick="ConVaseVisibility"/>
+               <com.qr.qrattendance.CustomViews.SignatureView
+                   android:id="@+id/sinatureView"
+                   android:layout_width="match_parent"
+                   android:visibility="invisible"
+                   android:layout_height="90dp" />
+               </RelativeLayout>
+               <Button
+                   android:layout_width="0dp"
+                   android:layout_height="90dp"
+                   android:layout_weight=".5"
+                   android:id="@+id/savePDF_btn"
+                   android:text="Save PDF"/>
+           </LinearLayout>
+
 
 
 
