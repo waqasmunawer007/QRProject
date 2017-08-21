@@ -246,6 +246,7 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:id="@+id/TableBlowPortion_linearLayout"
+               android:visibility="invisible"
                android:weightSum="1"
 
                android:orientation="horizontal">

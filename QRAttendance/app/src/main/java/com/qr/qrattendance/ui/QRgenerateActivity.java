@@ -33,8 +33,7 @@ public class QRgenerateActivity extends AppCompatActivity
     EditText student_name_editText,student_number_editText,student_badge_editText;
     Button generate_qr_code_button;
     ImageView qr_code_imageView;
-    private AdView mAdView;
-    private InterstitialAd mInterstitialAd;
+  
     File imagePath;
     String NameEditVale,BatchEditVale,NumberEditVale ;
     Thread thread ;

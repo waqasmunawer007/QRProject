@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity implements IAttendaceMark{
             }
         });
 
-
-
-
     }
 
 
@@ -120,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements IAttendaceMark{
         TextView   mName_textView= (TextView) tableRow.findViewById(R.id.student_name_textView);
         TextView mNumber_textView  = (TextView) tableRow.findViewById(R.id.student_number_textView);
         TextView mBadge_textView  = (TextView) tableRow.findViewById(R.id.student_badge_textView);
-
         mCounter_textView.setText(""+count++);
         mName_textView.setText(name);
         mNumber_textView.setText(number);
@@ -128,9 +124,11 @@ public class MainActivity extends AppCompatActivity implements IAttendaceMark{
         mTableLayout.addView(tableRow);
 
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
+        if (requestCode == 1)
+        {
             if(resultCode == RESULT_OK) {
                 String strEditText = data.getStringExtra("editTextValue");
                 AttendaceMark(strEditText);
@@ -149,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements IAttendaceMark{
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
         ScrollView root = (ScrollView) inflater.inflate(R.layout.activity_main, null); //RelativeLayout is root view of my UI(xml) file.
         root.setDrawingCacheEnabled(true);
-        Bitmap screen= PDF_Manger.getBitmapFromView(this.getWindow().findViewById(R.id.main_Scroll_root)); // here give id of our root layout (here its my RelativeLayout's id
+        Bitmap screen= PDF_Manger.getBitmapFromView(findViewById(R.id.main_Scroll_root)); // here give id of our root layout (here its my RelativeLayout's id
         root.setDrawingCacheEnabled(false);
         PDF_Manger pdf_manger = new PDF_Manger();
         pdf_manger.makeDocument(screen);

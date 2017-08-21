@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ScrollView;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -26,10 +27,12 @@ public class PDF_Manger{
         private static String FILE = "mnt/sdcard/invoice.pdf";
         public static Bitmap getBitmapFromView(View view) {
             //Define a bitmap with the same size as the view
-            //  Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.ARGB_8888);
-            Bitmap returnedBitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(),Bitmap.Config.ARGB_8888);
+            int totalWidth=((ScrollView)view).getChildAt(0).getWidth();
+            int totalHeight=((ScrollView)view).getChildAt(0).getHeight();
+            Bitmap bitmap = Bitmap.createBitmap(totalWidth, totalHeight, Bitmap.Config.ARGB_8888);
             //Bind a canvas to it
-            Canvas canvas = new Canvas(returnedBitmap);
+            Canvas canvas = new Canvas(bitmap);
+            view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
             //Get the view's background
             Drawable bgDrawable =view.getBackground();
             if (bgDrawable!=null)
@@ -41,21 +44,21 @@ public class PDF_Manger{
             // draw the view on the canvas
             view.draw(canvas);
             //return the bitmap
-            return returnedBitmap;
+            return bitmap;
         }
 
 
         public  void makeDocument(Bitmap screen){
             try
             {
-                Document document = new Document();
-
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                screen.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+                image = Image.getInstance(stream.toByteArray());
+                image.setAbsolutePosition(0, 0);
+                Document document = new Document(image);
                 PdfWriter.getInstance(document, new FileOutputStream(FILE));
                 document.open();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                screen.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                addImage(document,byteArray);
+                document.add(image);
                 document.close();
             }
 
@@ -66,36 +69,6 @@ public class PDF_Manger{
         }
 
 
-        private static void addImage(Document document,byte[] byteArray)
-        {
-            try
-            {
-                image = Image.getInstance(byteArray);
-               // image.setAbsolutePosition(0, 0);
-            }
-            catch (BadElementException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            catch (MalformedURLException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            catch (IOException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            // image.scaleAbsolute(150f, 150f);
-            try
-            {
-                document.add(image);
-            } catch (DocumentException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
+
 
 }
